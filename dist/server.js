@@ -15,6 +15,7 @@ const lodash_1 = __importDefault(require("lodash"));
 const CTtoken_1 = require("./service/CTtoken");
 const customerResolver_1 = __importDefault(require("./resolvers/customerResolver"));
 const ProductsResolver_1 = __importDefault(require("./resolvers/ProductsResolver"));
+const default_1 = require("@apollo/server/plugin/landingPage/default");
 async function startServer() {
     dotenv_1.default.config();
     try {
@@ -37,6 +38,9 @@ async function startServer() {
         });
         const server = new server_1.ApolloServer({
             schema,
+            plugins: [
+                (0, default_1.ApolloServerPluginLandingPageLocalDefault)()
+            ],
             introspection: true
         });
         const app = (0, express_1.default)();
