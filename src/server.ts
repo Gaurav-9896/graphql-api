@@ -10,7 +10,7 @@ import lodash from 'lodash';
 import { getAccessToken } from './service/CTtoken';
 import customerResolvers from './resolvers/customerResolver';
 import productResolvers from './resolvers/ProductsResolver';
-
+import { ApolloServerPluginLandingPageGraphQLPlayground } from '@apollo/server-plugin-landing-page-graphql-playground';
 async function startServer() {
     
     dotenv.config();
@@ -41,7 +41,9 @@ async function startServer() {
 
         const server = new ApolloServer({
             schema,
-    
+            plugins: [
+                ApolloServerPluginLandingPageGraphQLPlayground()
+              ],
             introspection: true
         });
 
