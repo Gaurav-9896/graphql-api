@@ -15,7 +15,6 @@ const lodash_1 = __importDefault(require("lodash"));
 const CTtoken_1 = require("./service/CTtoken");
 const customerResolver_1 = __importDefault(require("./resolvers/customerResolver"));
 const ProductsResolver_1 = __importDefault(require("./resolvers/ProductsResolver"));
-const default_1 = require("@apollo/server/plugin/landingPage/default");
 async function startServer() {
     dotenv_1.default.config();
     try {
@@ -38,16 +37,16 @@ async function startServer() {
         });
         const server = new server_1.ApolloServer({
             schema,
-            plugins: [
-                (0, default_1.ApolloServerPluginLandingPageLocalDefault)()
-            ],
             introspection: true
         });
         const app = (0, express_1.default)();
         app.use(express_1.default.json());
-        app.use((0, cors_1.default)());
+        app.use((0, cors_1.default)({
+            origin: '*', // Allow requests from all domains
+            credentials: true, // Enable CORS response for requests with credentials
+        }));
         await server.start();
-        app.use('/api/graphql', (0, express4_1.expressMiddleware)(server, { context: async ({ req }) => ({ req }) }));
+        app.use('/graphql', (0, express4_1.expressMiddleware)(server, { context: async ({ req }) => ({ req }) }));
         app.listen(8000, () => console.log('Server started at port 8000'));
     }
     catch (error) {

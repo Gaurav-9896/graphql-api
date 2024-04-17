@@ -43,18 +43,20 @@ import {ApolloServerPluginLandingPageLocalDefault} from "@apollo/server/plugin/l
 
         const server = new ApolloServer({
             schema,
-            plugins: [
-                ApolloServerPluginLandingPageLocalDefault()
-              ],
+          
             introspection: true
         });
 
         const app = express();
         app.use(express.json());
-        app.use(cors());
+        app.use(cors({
+            origin: '*', // Allow requests from all domains
+            credentials: true, // Enable CORS response for requests with credentials
+        }));
+        
 
         await server.start();
-        app.use('/api/graphql', expressMiddleware(server,{context: async({ req }) => ({ req })}));
+        app.use('/graphql', expressMiddleware(server,{context: async({ req }) => ({ req })}));
 
         app.listen(8000, () => console.log('Server started at port 8000'));
     } catch (error) {
