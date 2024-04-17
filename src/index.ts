@@ -13,7 +13,7 @@ import productResolvers from './resolvers/ProductsResolver';
 import {ApolloServerPluginLandingPageLocalDefault} from "@apollo/server/plugin/landingPage/default";
 
 
-  export async function startServer() {
+   async function startServer() {
     
     dotenv.config();
   
@@ -64,6 +64,6 @@ import {ApolloServerPluginLandingPageLocalDefault} from "@apollo/server/plugin/l
 
 
 
-// startServer().catch(error => {
-//     console.error('Error starting the server:', error);
-// });
+startServer().catch(error => {
+    console.error('Error starting the server:', error);
+});
