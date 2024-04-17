@@ -54,7 +54,7 @@ import {ApolloServerPluginLandingPageLocalDefault} from "@apollo/server/plugin/l
         app.use(cors());
 
         await server.start();
-        app.use('/graphql', expressMiddleware(server,{context: async({ req }) => ({ req })}));
+        app.use('/api/graphql', expressMiddleware(server,{context: async({ req }) => ({ req })}));
 
         app.listen(8000, () => console.log('Server started at port 8000'));
     } catch (error) {
