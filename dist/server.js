@@ -47,7 +47,7 @@ async function startServer() {
         app.use(express_1.default.json());
         app.use((0, cors_1.default)());
         await server.start();
-        app.use('/graphql', (0, express4_1.expressMiddleware)(server, { context: async ({ req }) => ({ req }) }));
+        app.use('/api/graphql', (0, express4_1.expressMiddleware)(server, { context: async ({ req }) => ({ req }) }));
         app.listen(8000, () => console.log('Server started at port 8000'));
     }
     catch (error) {
