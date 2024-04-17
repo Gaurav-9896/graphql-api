@@ -10,9 +10,10 @@ import lodash from 'lodash';
 import { getAccessToken } from './service/CTtoken';
 import customerResolvers from './resolvers/customerResolver';
 import productResolvers from './resolvers/ProductsResolver';
-import { ApolloServerPluginLandingPageGraphQLPlayground } from '@apollo/server-plugin-landing-page-graphql-playground';
 import {ApolloServerPluginLandingPageLocalDefault} from "@apollo/server/plugin/landingPage/default";
-async function startServer() {
+
+
+  export async function startServer() {
     
     dotenv.config();
   
@@ -61,6 +62,8 @@ async function startServer() {
     }
 }
 
-startServer().catch(error => {
-    console.error('Error starting the server:', error);
-});
+
+
+// startServer().catch(error => {
+//     console.error('Error starting the server:', error);
+// });

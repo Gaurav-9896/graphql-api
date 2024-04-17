@@ -3,6 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.startServer = void 0;
 const server_1 = require("@apollo/server");
 const dotenv_1 = __importDefault(require("dotenv"));
 const express4_1 = require("@apollo/server/express4");
@@ -54,6 +55,7 @@ async function startServer() {
         console.log("Internal Server Error", error);
     }
 }
-startServer().catch(error => {
-    console.error('Error starting the server:', error);
-});
+exports.startServer = startServer;
+// startServer().catch(error => {
+//     console.error('Error starting the server:', error);
+// });
