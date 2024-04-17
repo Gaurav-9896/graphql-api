@@ -7,5 +7,5 @@
         }
     ],
    
-    "rewrites": [{ "source": "/(.*)", "destination": "/graphql" }]
+    "rewrites": [{ "source": "/(.*)", "destination": "/" }]
 }
